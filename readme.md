@@ -34,7 +34,7 @@ Documentation pending on the ML layer._
 
 __CV__
 
-#### POST/createboard
+#### POST/api/createboard
 
 Sends JSON that looks like the following
 
@@ -92,7 +92,7 @@ Description is most likely left blank
 Color could associate with a assignee
 
 
-#### GET/getboard
+#### GET/api/getboard
 
 Gets a picture of the board when last updated. The jpg photo is sent in a JSON
 object link.
@@ -105,7 +105,7 @@ object link.
 }
 ```
 
-#### GET/imageofidx
+#### GET/api/imageofidx
 
 Gets a picture of the note when requested. The jpg photo is sent in a JSON
 object.

@@ -3,8 +3,14 @@
 //CV Camera and our Web App front end
 
 var express = require('express');
-var app = require();
-var bodyParser = require('bodyParser');
+var app = express();
+var bodyParser = require('body-parser');
+var mongoose = require('mongoose');
+var Kanban = require('./app/models/kanban');
+
+//Connecting to our mongo webscale database
+
+mongoose.connect('172.17.0.2:27017/livekan');
 
 //BodyParser allows us to get data from a POST from our CV
 
@@ -17,11 +23,45 @@ var port = process.env.PORT || 8080;
 
 var router = express.Router();
 
+//Middleware is on the beat
+
+router.use(function(req, res, next) {
+  console.log('Something is happen.');
+  next();
+})
+
 //The usual test router
 
 router.get('/', function (req, res){
-  res.json({  message: 'we bouta do things'});
-})
+  res.json({ message: 'we bouta do things' });
+});
+
+// -------------------------------------------------------------------------
+// new kanban(s) + plus names the instance
+
+router.route('/kanbans')
+
+    .post(function(req, res) {
+      var kanban = Kanban();
+      kanban.name = req.body.name;
+
+      kanban.save(function(err) {
+        if (err)
+          res.send(err);
+
+        res.json({ message: 'Kanban created!' });
+      });
+    })
+
+    .get(function(req, res) {
+      Kanban.find(function(err, kanban){
+          if (err)
+            res.send(err);
+
+          res.json(kanbans);
+      });
+    })
+
 
 //All our routes will be using /API as a prefix
 

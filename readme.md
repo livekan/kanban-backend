@@ -118,3 +118,19 @@ Place holder image
 ]
 }
 ```
+
+___USERS____
+
+For now we will be using pre-mocked work and performance data, however we will have internal application logic to track metrics and then display it.
+
+
+In addition, we will have routes that allow you to modify the following parameters.
+
+Tasks completed, strengths, contribution, time employed, rating trends, future tackle
+
+
+#### GET/api/userinfo
+
+Dude its user information
+
+awaiting mocks

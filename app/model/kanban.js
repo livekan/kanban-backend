@@ -5,10 +5,10 @@ var Schema = mongoose.Schema;
 
 var KanbanSchema = new Schema({
     //<name>: <type>,
-    id : String,
-    header: String,
-    text: String,
-    isHeader: String,
+    title: String
+  //header: String,
+  //text: String,
+  //isHeader: String
   //  "color": String,
   //  "title": String
   //"notes": [

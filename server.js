@@ -4,13 +4,18 @@
 
 var express = require('express');
 var app = express();
+var path = require('path');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var Kanban = require('./app/models/kanban');
+var fs = require('fs');
+
+var COMMENTS_FILE = path.join(__dirname, 'kanban2.json');
+var DATA_FILE = path.join(__dirname, 'kanban.json');
 
 //Connecting to our mongo webscale database
 
-mongoose.connect('mongodb://localhost:27017/test');
+mongoose.connect('mongodb://localhost:27017/livekan');
 
 //BodyParser allows us to get data from a POST from our CV
 
@@ -65,80 +70,41 @@ router.route('/kanbans')
 
 .post(function(req, res) {
     console.log("did it");
-    var kanban = new Kanban(req.body);
-    kanban.id = req.body.id;
-    kanban.header = req.body.header;
-    kanban.text = req.body.text;
-    kanban.isHeader = req.body.isHeader;
-  //  kanban.color = req.body.color;
-  //  kanban.title = req.body.title;
-  //  kanban.notes = req.body.notes;
-  //  kanban.notes.color = req.body.notes.color;
-  //  kanban.notes.desc = req.body.notes.desc;
-  //  kanban.notes.assignee = req.body.notes.assignee;
+    console.log(req.body);
+    fs.writeFile(COMMENTS_FILE, JSON.stringify(req.body, null, 4), function(err) {
+     if (err) {
+       console.error(err);
+       process.exit(1);
+     }
+     res.send('dope');
+   });
+
 console.log(req.body);
-
-
-    // save the user and check for errors
-    kanban.save(function(err) {
-        if (err)
-            res.send(err);
-
-        res.json({ message: 'Created Kanban!' });
-    });
-
 })
 
     .get(function(req, res) {
-      kanban.find(function(err, kanban){
-          if (err)
-            res.send(err);
+       fs.readFile(COMMENTS_FILE, function(err, data) {
+         if (err) {
+           console.error(err);
+           process.exit(1);
+         }
+         res.json(JSON.parse(data));
+       });
+     });
 
-          res.json(kanbans);
-      });
-    });
 
 // -----------------------------------------------------------------------------
-//new plus get users
-
-router.route('/users')
-
-.post(function(req, res) {
-
-    var user = new User();
-    user.name = req.body.name;
-    user.pink = req.body.pink;
-    user.yellow = req.body.yellow;
-    user.blue = req.body.blue;
-    user.green = req.body.green;
-    user.pink2 = req.body.pink2;
-    user.yellow2 = req.body.yellow2;
-    user.blue2 = req.body.blue2;
-    user.green2 = req.body.green2;
-    user.time_employed = req.body.time_employed;
-    user.rating = req.body.rating;
-    user.completed = req.body.completed;
-    user.assigned = req.body.assigned;
-
-    // save the user and check for errors
-    user.save(function(err) {
-        if (err)
-            res.send(err);
-
-        res.json({ message: 'Created User!' });
-    });
-
-})
-
+router.route('/altmock')
 
     .get(function(req, res) {
-      user.find(function(err, kanban){
-          if (err)
-            res.send(err);
-
-          res.json(users);
-      });
-    });
+       fs.readFile(DATA_FILE, function(err, data) {
+         if (err) {
+           console.error(err);
+           process.exit(1);
+         }
+         res.json(JSON.parse(data));
+       });
+     });
 
 //------------------------------------------------------------------------------
 //Our analytics suite will be here if possible
@@ -146,6 +112,8 @@ router.route('/users')
 //All our routes will be using /API as a prefix
 
 app.use('/api', router);
+
+
 
 //The server has to run somehow right?
 

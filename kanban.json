@@ -1,0 +1,82 @@
+[
+ {
+   "title": "Ice Box",
+   "notes": [
+     {
+       "color": "#fac018 ",
+       "desc": "Say hi to Juan",
+       "assignee": "Angelo"
+     },
+     {
+       "color": "#f2ff00 ",
+       "desc": "Congratulate team on job well done",
+       "assignee": "Evan"
+     },
+     {
+       "color": "#FF0066 ",
+       "desc": "Say hi to Juan",
+       "assignee": "Angelo"
+     },
+     {
+       "color": "#1092F5 ",
+       "desc": "Congratulate team on job well done",
+       "assignee": "Evan"
+     }
+   ]
+ },
+ {
+   "title": "To Do",
+   "notes": [
+     {
+       "color": "#fac018 ",
+       "desc": "Connect CV to Backend",
+       "assignee": "Aleks"
+     },
+     {
+       "color": "#f2ff00 ",
+       "desc": "Dance with Tahashi",
+       "assignee": "Devansh"
+     },
+     {
+       "color": "#1092F5 ",
+       "desc": "Say hi to Juan",
+       "assignee": "Angelo"
+     },
+     {
+       "color": "#FF0066 ",
+       "desc": "Congratulate team on job well done",
+       "assignee": "Evan"
+     }
+   ]
+ },
+ {
+   "title": "In Progress",
+   "notes": [
+     {
+       "color": "#fac018 ",
+       "desc": "Back End All-Routes",
+       "assignee": "Aleks"
+     },
+     {
+       "color": "#f2ff00 ",
+       "desc": "Front End - Kanban",
+       "assignee": "Devansh"
+     }
+   ]
+ },
+ {
+   "title": "Done! Done!",
+   "notes": [
+     {
+       "color": "#f2ff00 ",
+       "desc": "React Setup",
+       "assignee": "Aleks"
+     },
+     {
+       "color": "#fac018 ",
+       "desc": "Deploy on Linode",
+       "assignee": "Devansh"
+     }
+   ]
+ }
+]

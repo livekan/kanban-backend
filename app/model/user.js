@@ -14,8 +14,8 @@ var UserSchema = new Schema({
     "yellow2": String,
     "blue2": String,
     "green2": String,
-    "time_employed": integer,
-    "rating": integer,
+    "time_employed": Number,
+    "rating": Number,
     "completed": Array,
     "assigned": Array,
 });

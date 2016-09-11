@@ -38,37 +38,45 @@ router.get('/', function (req, res){
 
 // -----------------------------------------------------------------------------
 // new kanban(s) + plus names the instance
-var kanban = Kanban();
-router.route('/kanbans/cv')
+//var kanban = Kanban();
+//router.route('/kanbans/cv')
+//
+//.post(function(req, res) {
 
-.post(function(req, res) {
-
-    var kanban = new Kanban();
-    kanban.id = req.body.id;
-    kanban.color = req.body.color;
+  //  var kanban = new Kanban();
+  //  kanban.id = req.body.id;
+  //  kanban.color = req.body.color;
 
 
 
     // save the user and check for errors
-    kanban.save(function(err) {
-        if (err)
-            res.send(err);
+  //  kanban.save(function(err) {
+    //    if (err)
+      //      res.send(err);
 
-        res.json({ message: 'Created Kanban CV data' });
-    });
+    //    res.json({ message: 'Created Kanban CV data' });
+  //  });
 
-})
+//})
 
 //------------------------------------------------------------------------------
 
 router.route('/kanbans')
 
 .post(function(req, res) {
-
-    var kanban = new Kanban();
+    console.log("did it");
+    var kanban = new Kanban(req.body);
     kanban.id = req.body.id;
-    kanban.color = req.body.color;
-
+    kanban.header = req.body.header;
+    kanban.text = req.body.text;
+    kanban.isHeader = req.body.isHeader;
+  //  kanban.color = req.body.color;
+  //  kanban.title = req.body.title;
+  //  kanban.notes = req.body.notes;
+  //  kanban.notes.color = req.body.notes.color;
+  //  kanban.notes.desc = req.body.notes.desc;
+  //  kanban.notes.assignee = req.body.notes.assignee;
+console.log(req.body);
 
 
     // save the user and check for errors
@@ -82,7 +90,7 @@ router.route('/kanbans')
 })
 
     .get(function(req, res) {
-      kanban.find(function(err, Kanban){
+      kanban.find(function(err, kanban){
           if (err)
             res.send(err);
 

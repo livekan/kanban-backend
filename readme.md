@@ -9,9 +9,9 @@ interacting with the ML layer of this backend.
 
 This backend is structured in three layers, first a API interface where the CV camera
 POST's information to this server. When information is posted, it is stored in a
-in a PostgreSQL database.
+in a mongo database.
 
-In PostgreSQL, events are stored in a chronological
+In mongo, events are stored in a chronological
 fashion. (Our storage system works like a traditional database but the methodology
 behind it is one of a CQRS model.) Separate of that, we have a users DB.
 
@@ -85,7 +85,7 @@ CV pairing data
 ```
 {"id" : self.idx, "header": self.parentHeader, "text": text, "isHeader": self.isHeader, "color": self.color}
 ```
-Header is either 0 or 1,
+is either 0 or 1,
 
 Only 1 is Header
 

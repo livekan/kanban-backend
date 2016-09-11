@@ -5,11 +5,11 @@ var Schema = mongoose.Schema;
 
 var KanbanSchema = new Schema({
     //<name>: <type>,
-    "id": integer,
-    "header": integer,
+    "id" : String,
+    "header": String,
     "text": String,
+    "isHeader": String,
     "color": String
-
 });
 
 module.exports = mongoose.model('Kanban', KanbanSchema);

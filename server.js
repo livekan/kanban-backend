@@ -38,6 +38,28 @@ router.get('/', function (req, res){
 
 // -----------------------------------------------------------------------------
 // new kanban(s) + plus names the instance
+var kanban = Kanban();
+router.route('/kanbans/cv')
+
+.post(function(req, res) {
+
+    var kanban = new Kanban();
+    kanban.id = req.body.id;
+    kanban.color = req.body.color;
+
+
+
+    // save the user and check for errors
+    kanban.save(function(err) {
+        if (err)
+            res.send(err);
+
+        res.json({ message: 'Created Kanban CV data' });
+    });
+
+})
+
+//------------------------------------------------------------------------------
 
 router.route('/kanbans')
 
@@ -45,8 +67,6 @@ router.route('/kanbans')
 
     var kanban = new Kanban();
     kanban.id = req.body.id;
-    kanban.header = req.body.header;
-    kanban.text = req.body.text;
     kanban.color = req.body.color;
 
 
@@ -61,9 +81,8 @@ router.route('/kanbans')
 
 })
 
-
     .get(function(req, res) {
-      kanban.find(function(err, kanban){
+      kanban.find(function(err, Kanban){
           if (err)
             res.send(err);
 
@@ -112,6 +131,9 @@ router.route('/users')
           res.json(users);
       });
     });
+
+//------------------------------------------------------------------------------
+//Our analytics suite will be here if possible
 
 //All our routes will be using /API as a prefix
 

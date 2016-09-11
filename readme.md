@@ -119,7 +119,7 @@ Place holder image
 }
 ```
 
-___USERS____
+___USERS___
 
 For now we will be using pre-mocked work and performance data, however we will have internal application logic to track metrics and then display it.
 
@@ -133,4 +133,59 @@ Tasks completed, strengths, contribution, time employed, rating trends, future t
 
 Dude its user information
 
-awaiting mocks
+```
+[
+ {
+   "name": "Evan Desantola",
+   "pink": "0",
+   "yellow": "4",
+   "blue": "9",
+   "green": "2",
+
+   "pink2": 1,
+   "yellow2": 1,
+   "blue2": 1,
+   "green2": 1,
+
+   "time_employed":5,
+   "rating": 5,
+
+   "completed":[
+     {"color": "#FA351B ",
+       "desc": "Create Spring Notes"},
+     {"color": "#1B87FA ",
+       "desc": "Say Hi to Juan"}
+   ],
+   "assigned":[
+     {"color": "#BBFA1B ",
+       "desc": "Say Hi to Alex"}
+   ]
+ },
+ {
+   "name": "Angelo Saraceno",
+   "pink": "5",
+   "yellow": "1",
+   "blue": "23",
+   "green": "12",
+
+   "pink2": 1,
+   "yellow2": 1,
+   "blue2": 1,
+   "green2": 1,
+
+   "time_employed":5,
+   "rating": 5,
+
+   "completed":[
+     {"color": "#FA351B ",
+       "desc": "Create Spring Notes"},
+     {"color": "#1B87FA ",
+       "desc": "Say Hi to Juan"}
+   ],
+   "assigned":[
+     {"color": "#BBFA1B ",
+       "desc": "Say Hi to Alex"}
+   ]
+ }
+]
+```

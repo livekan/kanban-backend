@@ -36,7 +36,7 @@ router.get('/', function (req, res){
   res.json({ message: 'we bouta do things' });
 });
 
-// -------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 // new kanban(s) + plus names the instance
 
 router.route('/kanbans')
@@ -44,27 +44,74 @@ router.route('/kanbans')
 .post(function(req, res) {
 
     var kanban = new Kanban();
-    kanban.name = req.body.name;
-    // save the bear and check for errors
+    kanban.id = req.body.id;
+    kanban.header = req.body.header;
+    kanban.text = req.body.text;
+    kanban.color = req.body.color;
+
+
+
+    // save the user and check for errors
     kanban.save(function(err) {
         if (err)
             res.send(err);
 
-        res.json({ message: 'Created!' });
+        res.json({ message: 'Created Kanban!' });
     });
 
-});
+})
 
 
-    //.get(function(req, res) {
-    //  Kanban.find(function(err, kanban){
-    //      if (err)
-    //        res.send(err);
-    //
-    //      res.json(kanbans);
-    //  });
-    //});
+    .get(function(req, res) {
+      kanban.find(function(err, kanban){
+          if (err)
+            res.send(err);
 
+          res.json(kanbans);
+      });
+    });
+
+// -----------------------------------------------------------------------------
+//new plus get users
+
+router.route('/users')
+
+.post(function(req, res) {
+
+    var user = new User();
+    user.name = req.body.name;
+    user.pink = req.body.pink;
+    user.yellow = req.body.yellow;
+    user.blue = req.body.blue;
+    user.green = req.body.green;
+    user.pink2 = req.body.pink2;
+    user.yellow2 = req.body.yellow2;
+    user.blue2 = req.body.blue2;
+    user.green2 = req.body.green2;
+    user.time_employed = req.body.time_employed;
+    user.rating = req.body.rating;
+    user.completed = req.body.completed;
+    user.assigned = req.body.assigned;
+
+    // save the user and check for errors
+    user.save(function(err) {
+        if (err)
+            res.send(err);
+
+        res.json({ message: 'Created User!' });
+    });
+
+})
+
+
+    .get(function(req, res) {
+      user.find(function(err, kanban){
+          if (err)
+            res.send(err);
+
+          res.json(users);
+      });
+    });
 
 //All our routes will be using /API as a prefix
 

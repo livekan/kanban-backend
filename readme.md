@@ -34,7 +34,7 @@ Documentation pending on the ML layer._
 
 __CV__
 
-#### POST/api/createboard
+#### POST/api/kanban
 
 Sends JSON that looks like the following
 
@@ -80,6 +80,19 @@ Sends JSON that looks like the following
 ]
 }
 ```
+
+CV pairing data
+```
+{"id" : self.idx, "header": self.parentHeader, "text": text, "isHeader": self.isHeader, "color": self.color}
+```
+Header is either 0 or 1,
+
+Only 1 is Header
+
+each object has a id and it's parent is it's child, if its a header is it's self
+
+
+
 
 Returns a 200 when created
 
@@ -129,7 +142,7 @@ In addition, we will have routes that allow you to modify the following paramete
 Tasks completed, strengths, contribution, time employed, rating trends, future tackle
 
 
-#### GET/api/userinfo
+#### GET/api/users
 
 Dude its user information
 

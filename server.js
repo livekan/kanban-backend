@@ -10,11 +10,11 @@ var Kanban = require('./app/models/kanban');
 
 //Connecting to our mongo webscale database
 
-mongoose.connect('172.17.0.2:27017/livekan');
+mongoose.connect('mongodb://localhost:27017/test');
 
 //BodyParser allows us to get data from a POST from our CV
 
-app.use(bodyParser.urlencoded({ extended: true}));
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 var port = process.env.PORT || 8080;
@@ -28,7 +28,7 @@ var router = express.Router();
 router.use(function(req, res, next) {
   console.log('Something is happen.');
   next();
-})
+});
 
 //The usual test router
 
@@ -41,26 +41,29 @@ router.get('/', function (req, res){
 
 router.route('/kanbans')
 
-    .post(function(req, res) {
-      var kanban = Kanban();
-      kanban.name = req.body.name;
+.post(function(req, res) {
 
-      kanban.save(function(err) {
+    var kanban = new Kanban();
+    kanban.name = req.body.name;
+    // save the bear and check for errors
+    kanban.save(function(err) {
         if (err)
-          res.send(err);
-
-        res.json({ message: 'Kanban created!' });
-      });
-    })
-
-    .get(function(req, res) {
-      Kanban.find(function(err, kanban){
-          if (err)
             res.send(err);
 
-          res.json(kanbans);
-      });
-    })
+        res.json({ message: 'Created!' });
+    });
+
+});
+
+
+    //.get(function(req, res) {
+    //  Kanban.find(function(err, kanban){
+    //      if (err)
+    //        res.send(err);
+    //
+    //      res.json(kanbans);
+    //  });
+    //});
 
 
 //All our routes will be using /API as a prefix
